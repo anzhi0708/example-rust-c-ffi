@@ -7,14 +7,12 @@ cc -fPIC -shared ./src/c_source/hello.c -o ./libhello.so
 cargo build
 
 # 3.
-# Adds `c_source/` to dylib search path (-L)
-#
+# Adds libhello.so's parent directory to dylib search path (-L)
+# in this case, project root directory (.)
 # Linux
-# export LD_LIBRARY_PATH=$(pwd)/src/c_source:$(LD_LIBRARY_PATH)
 export LD_LIBRARY_PATH=$(pwd):$(LD_LIBRARY_PATH)
 #
 # MacOS
-# export DYLD_LIBRARY_PATH=$(pwd)/src/c_source:$(DYLD_LIBRARY_PATH)
 export DYLD_LIBRARY_PATH=$(pwd):$(DYLD_LIBRARY_PATH)
 
 
